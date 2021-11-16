@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.olivine.mybatis.mapper.UserMapper">
+
+    <resultMap type="UserDO" id="UserMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="uid" column="uid" jdbcType="VARCHAR"/>
+        <result property="authLevel" column="auth_level" jdbcType="INTEGER"/>
+        <result property="gamePlatform" column="game_platform" jdbcType="VARCHAR"/>
+        <result property="ctime" column="ctime" jdbcType="TIMESTAMP"/>
+        <result property="mtime" column="mtime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, name, uid, auth_level, game_platform, ctime, mtime
+    </sql>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="UserMap">
+        select
+          <include refid="Base_Column_List"/>
+        from User
+        where id = #{id}
+    </select>
+
+    <!-- -->
+    <select id="quaryByUid" resultMap="UserMap">
+        SELECT
+            <include refid="Base_Column_List"/>
+        FROM User
+        WHERE uid = #{uid}
+    </select>
+
+
+    <select id="quaryAll" resultMap="UserMap">
+        SELECT
+            <include refid="Base_Column_List"/>
+        FROM User
+        ORDER BY id;
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="UserMap">
+        select
+          id, name, uid, auth_level, game_platform, ctime, mtime
+        from User
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="uid != null and uid != ''">
+                and uid = #{uid}
+            </if>
+            <if test="authLevel != null">
+                and auth_level = #{authLevel}
+            </if>
+            <if test="gamePlatform != null and gamePlatform != ''">
+                and game_platform = #{gamePlatform}
+            </if>
+            <if test="ctime != null">
+                and ctime = #{ctime}
+            </if>
+            <if test="mtime != null">
+                and mtime = #{mtime}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from User
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="uid != null and uid != ''">
+                and uid = #{uid}
+            </if>
+            <if test="authLevel != null">
+                and auth_level = #{authLevel}
+            </if>
+            <if test="gamePlatform != null and gamePlatform != ''">
+                and game_platform = #{gamePlatform}
+            </if>
+            <if test="ctime != null">
+                and ctime = #{ctime}
+            </if>
+            <if test="mtime != null">
+                and mtime = #{mtime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into User
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="uid != null">
+                uid,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="authLevel != null">
+                auth_level,
+            </if>
+            <if test="gamePlatform != null">
+                game_platform,
+            </if>
+            <if test="ctime != null">
+                ctime,
+            </if>
+            <if test="mtime != null">
+                mtime
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="uid != null">
+                #{uid,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="authLevel != null">
+                #{authLevel,jdbcType=INTEGER},
+            </if>
+            <if test="gamePlatform != null">
+                #{gamePlatform,jdbcType=VARCHAR},
+            </if>
+            <if test="ctime != null">
+                #{ctime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="mtime != null">
+                #{mtime,jdbcType=TIMESTAMP}
+            </if>
+        </trim>
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into User(name, uid, auth_level, game_platform, ctime, mtime)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.name}, #{entity.uid}, #{entity.authLevel}, #{entity.gamePlatform}, #{entity.ctime}, #{entity.mtime})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into User(name, uid, auth_level, game_platform, ctime, mtime)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.name}, #{entity.uid}, #{entity.authLevel}, #{entity.gamePlatform}, #{entity.ctime}, #{entity.mtime})
+        </foreach>
+        on duplicate key update
+        name = values(name),
+        uid = values(uid),
+        auth_level = values(auth_level),
+        game_platform = values(game_platform),
+        ctime = values(ctime),
+        mtime = values(mtime)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update User
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="uid != null and uid != ''">
+                uid = #{uid},
+            </if>
+            <if test="authLevel != null">
+                auth_level = #{authLevel},
+            </if>
+            <if test="gamePlatform != null and gamePlatform != ''">
+                game_platform = #{gamePlatform},
+            </if>
+            <if test="ctime != null">
+                ctime = #{ctime},
+            </if>
+            <if test="mtime != null">
+                mtime = #{mtime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from User where id = #{id}
+    </delete>
+
+</mapper>
+
