@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 356908
+    url: jdbc:mysql://127.0.0.1:3306/mybatis_demo?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+
+mybatis:
+  type-aliases-package: com.olivine.mybatis.entity.domain
+  mapper-locations:
+    - classpath:mybatis/mapper/**Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
