@@ -40,6 +40,13 @@
         ORDER BY id
     </select>
 
+    <select id="quaryAllByPageNumSize" resultMap="UserMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM User
+        ORDER BY id
+    </select>
+
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="UserMap">
         select

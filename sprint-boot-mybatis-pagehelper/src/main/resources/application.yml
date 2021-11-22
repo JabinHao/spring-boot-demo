@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: xiaoxin
+    password: 123456
+    url: jdbc:mysql://222.195.87.224:3306/mybatis_demo?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    hikari:
+#      jdbc-url: jdbc:mysql://222.195.87.224:3306/mybatis_demo?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+      connection-timeout: 30000
+      idle-timeout: 180000
+      max-lifetime: 1800000
+      maximum-pool-size: 10
+
