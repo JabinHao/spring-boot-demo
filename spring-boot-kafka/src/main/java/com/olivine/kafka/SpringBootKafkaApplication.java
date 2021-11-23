@@ -1,13 +1,13 @@
-package com.olivine.mybatis;
+package com.olivine.kafka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SprintBootMybatisPagehelperApplication {
+public class SpringBootKafkaApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SprintBootMybatisPagehelperApplication.class, args);
+        SpringApplication.run(SpringBootKafkaApplication.class, args);
     }
 
 }

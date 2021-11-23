@@ -1,0 +1,24 @@
+server:
+  port: 9091
+
+spring:
+  kafka:
+    listener:
+      ack-mode: manual
+    bootstrap-servers: 114.214.219.193:9092,114.214.219.193:9093,114.214.219.193:9094
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      batch-size: 16
+      acks: 1
+      buffer-memory: 33554432
+      retries: 3
+      properties:
+        linger:
+          ms: 300
+
+    consumer:
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      enable-auto-commit: false
