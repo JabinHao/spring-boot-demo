@@ -13,7 +13,7 @@
            url: jdbc:mysql://222.195.87.224:3306/mybatis_demo?       useUnicode=true&characterEncoding=utf8&useSSL=false&       serverTimezone=UTC
        
        mybatis:
-         type-aliases-package: com.olivine.mybatis.entity.domain
+         type-aliases-package: com.olivine.mybatis.domain.domain
          mapper-locations:
            - classpath:mybatis/mapper/**Mapper.xml
          config-location: classpath:mybatis/mybatis-config.xml

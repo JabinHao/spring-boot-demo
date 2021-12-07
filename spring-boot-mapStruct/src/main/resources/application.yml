@@ -1,0 +1,20 @@
+server:
+  port: 8001
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: emaQc8Rpd7tai5xQ3k4U
+    url: jdbc:mysql://114.214.219.193:3308/mybatis_demo?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    hikari:
+      connection-timeout: 1200
+      maximum-pool-size: 20
+      idle-timeout: 180000
+
+mybatis:
+  type-aliases-package: com.olivine.mapstruct.domain
+  mapper-locations:
+    - classpath:mapper/**Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true

@@ -154,7 +154,7 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into User(name, uid, auth_level, game_platform, ctime, mtime)
         values
-        <foreach collection="entities" item="entity" separator=",">
+        <foreach collection="entities" item="domain" separator=",">
         (#{entity.name}, #{entity.uid}, #{entity.authLevel}, #{entity.gamePlatform}, #{entity.ctime}, #{entity.mtime})
         </foreach>
     </insert>
@@ -162,7 +162,7 @@
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into User(name, uid, auth_level, game_platform, ctime, mtime)
         values
-        <foreach collection="entities" item="entity" separator=",">
+        <foreach collection="entities" item="domain" separator=",">
             (#{entity.name}, #{entity.uid}, #{entity.authLevel}, #{entity.gamePlatform}, #{entity.ctime}, #{entity.mtime})
         </foreach>
         on duplicate key update
