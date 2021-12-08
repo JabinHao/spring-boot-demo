@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.olivine.mapstruct.mapper.ScoreMapper">
-  <resultMap id="BaseResultMap" type="Score">
+  <resultMap id="BaseResultMap" type="com.olivine.mapstruct.domain.Score">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="student_id" jdbcType="VARCHAR" property="studentId" />
     <result column="course_id" jdbcType="INTEGER" property="courseId" />
@@ -24,6 +24,17 @@
     <include refid="Base_Column_List" />
     from score
     where id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="selectWithCourseByStudentId" resultType="java.util.Map">
+        select c.name course_name, s.score
+        from score s join course c on c.id = s.course_id
+        where s.student_id=#{studentId, jdbcType=VARCHAR}
+    </select>
+  <select id="selectByStudentId" resultType="com.olivine.mapstruct.domain.Score">
+    select
+    <include refid="Base_Column_List"/>
+    from score
+    where student_id=#{studentId, jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from score

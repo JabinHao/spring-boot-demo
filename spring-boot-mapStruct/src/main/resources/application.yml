@@ -6,7 +6,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: emaQc8Rpd7tai5xQ3k4U
-    url: jdbc:mysql://114.214.219.193:3308/mybatis_demo?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://114.214.219.193:3308/spring_boot?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     hikari:
       connection-timeout: 1200
       maximum-pool-size: 20

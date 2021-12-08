@@ -1,7 +1,6 @@
 package com.olivine.mapstruct.service;
 
 
-import com.olivine.mapstruct.domain.Score;
 import com.olivine.mapstruct.dto.ScoreDTO;
 
 import java.util.List;
@@ -15,6 +14,8 @@ import java.util.List;
 public interface ScoreService {
 
     List<ScoreDTO> findAll();
+
+    List<ScoreDTO> findByStudentId(String studentId);
 
     ScoreDTO findById(Integer id);
 

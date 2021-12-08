@@ -3,6 +3,7 @@ package com.olivine.mapstruct.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.util.Map;
@@ -12,14 +13,12 @@ import java.util.Map;
  * @Date 19:24 2021/12/07
  * @Description
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class StudentDTO extends BaseDTO{
     private static final long serialVersionUID = -861423382026489535L;
-
-    private Integer id;
-
     /**
      * 学号
      */

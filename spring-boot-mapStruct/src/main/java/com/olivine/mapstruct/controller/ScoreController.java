@@ -1,23 +1,13 @@
 package com.olivine.mapstruct.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.api.ApiController;
-import com.baomidou.mybatisplus.extension.api.R;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import .entity.Score;
-import .service.ScoreService;
 import com.olivine.common.dto.CommonResponse;
-import com.olivine.mapstruct.domain.Score;
 import com.olivine.mapstruct.dto.ScoreDTO;
-import org.springframework.web.bind.annotation.*;
 import com.olivine.mapstruct.service.ScoreService;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.io.Serializable;
 import java.util.List;
-
-import static org.junit.platform.commons.function.Try.success;
 
 /**
  * (Score)表控制层

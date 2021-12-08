@@ -5,13 +5,13 @@ import com.olivine.mapstruct.domain.Student;
 import java.util.List;
 
 public interface StudentMapper {
-    int deleteByStudentId(Integer id);
+    int deleteByStudentId(String id);
 
     int insert(Student record);
 
     int insertSelective(Student record);
 
-    Student selectByStudentId(Integer id);
+    Student selectById(Integer id);
 
     int updateByStudentIdSelective(Student record);
 
