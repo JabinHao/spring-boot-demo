@@ -9,7 +9,9 @@ public enum ApiCode {
 
     SUCCESS(200, "successful"),
 
-    FAILED(-400, "order doesn't exist");
+    FAILED(-400, "order doesn't exist"),
+
+    EMPTY(200, "no data found");
 
     private Integer code;
     private String message;

@@ -26,7 +26,7 @@ public class CourseController {
     private CourseService courseService;
 
     /**
-     * 分页查询所有数据
+     * 查询所有数据
      *
      * @return 所有数据
      */

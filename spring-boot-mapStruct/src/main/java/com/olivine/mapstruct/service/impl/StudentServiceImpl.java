@@ -2,15 +2,16 @@ package com.olivine.mapstruct.service.impl;
 
 import com.olivine.mapstruct.domain.Student;
 import com.olivine.mapstruct.dto.StudentDTO;
+import com.olivine.mapstruct.mapper.ScoreMapper;
 import com.olivine.mapstruct.mapper.StudentMapper;
 import com.olivine.mapstruct.service.StudentService;
 import com.olivine.mapstruct.utils.convert.StudentConvertUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import static com.olivine.mapstruct.utils.CommonConstants.JSON;
 
@@ -25,10 +26,12 @@ import static com.olivine.mapstruct.utils.CommonConstants.JSON;
 public class StudentServiceImpl implements StudentService {
 
     private final StudentMapper studentMapper;
+    private final ScoreMapper scoreMapper;
     private final StudentConvertUtil studentConvertUtil;
 
-    public StudentServiceImpl(StudentMapper studentMapper, StudentConvertUtil studentConvertUtil) {
+    public StudentServiceImpl(StudentMapper studentMapper, ScoreMapper scoreMapper, StudentConvertUtil studentConvertUtil) {
         this.studentMapper = studentMapper;
+        this.scoreMapper = scoreMapper;
         this.studentConvertUtil = studentConvertUtil;
     }
 
@@ -46,6 +49,15 @@ public class StudentServiceImpl implements StudentService {
         Student student = studentMapper.selectByStudentId((String) id);
         log.info("查询学生信息: {}", JSON.toJson(student));
         return studentConvertUtil.student2StudentDTO(student);
+    }
+
+    @Override
+    public StudentDTO findWithScoreById(String id) {
+        final Student student = studentMapper.selectByStudentId(id);
+        final List<Map<String, Object>> scores = scoreMapper.selectWithCourseByStudentId(id);
+        final StudentDTO studentDTO = studentConvertUtil.student2StudentDTO(student, scores);
+        log.info("查询学生及成绩信息：{}", studentDTO);
+        return studentDTO;
     }
 
     @Override

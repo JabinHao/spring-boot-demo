@@ -58,4 +58,8 @@ public class CommonResponse<T> implements Serializable {
     public static <T> CommonResponse<T> success(T data) {
         return new CommonResponse<>(ApiCode.SUCCESS, data);
     }
+
+    public static <T> CommonResponse<T> empty(){
+        return new CommonResponse<T>(ApiCode.EMPTY);
+    }
 }

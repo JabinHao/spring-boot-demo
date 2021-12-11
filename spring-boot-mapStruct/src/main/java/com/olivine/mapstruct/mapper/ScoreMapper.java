@@ -17,8 +17,8 @@ public interface ScoreMapper {
 
     List<Score> selectByStudentId(String studentId);
 
-    @MapKey("course_name")
-    Map<String, Integer> selectWithCourseByStudentId();
+//    @MapKey("course_name")
+    List<Map<String, Object>> selectWithCourseByStudentId(String studentId);
 
     int updateByPrimaryKeySelective(Score record);
 

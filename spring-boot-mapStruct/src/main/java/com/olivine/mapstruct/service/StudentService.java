@@ -18,6 +18,8 @@ public interface StudentService {
 
     StudentDTO findById(Serializable id);
 
+    StudentDTO findWithScoreById(String id);
+
     void save(StudentDTO studentDTO);
 
     StudentDTO updateById(StudentDTO studentDTO);

@@ -9,6 +9,7 @@
     <result column="ctime" jdbcType="TIMESTAMP" property="ctime" />
     <result column="mtime" jdbcType="TIMESTAMP" property="mtime" />
   </resultMap>
+
   <sql id="Base_Column_List">
     id, student_id, course_id, score, ctime, mtime
   </sql>
@@ -25,7 +26,7 @@
     from score
     where id = #{id,jdbcType=INTEGER}
   </select>
-    <select id="selectWithCourseByStudentId" resultType="java.util.Map">
+    <select id="selectWithCourseByStudentId" resultType="hashmap">
         select c.name course_name, s.score
         from score s join course c on c.id = s.course_id
         where s.student_id=#{studentId, jdbcType=VARCHAR}

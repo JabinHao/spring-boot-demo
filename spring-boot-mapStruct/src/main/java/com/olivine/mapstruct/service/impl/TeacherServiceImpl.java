@@ -47,7 +47,7 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public void save(TeacherDTO teacherDTO) {
 
-        teacherMapper.insert(teacherConvertUtil.teacherDTO2Teacher(teacherDTO));
+        teacherMapper.insertSelective(teacherConvertUtil.teacherDTO2Teacher(teacherDTO));
         log.info("保存教师信息：{}", teacherDTO);
     }
 

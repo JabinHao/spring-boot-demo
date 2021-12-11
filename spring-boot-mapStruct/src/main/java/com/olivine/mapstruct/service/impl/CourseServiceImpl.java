@@ -47,7 +47,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public void save(CourseDTO course) {
-        courseMapper.insert(courseConvertUtil.courseDTO2Course(course));
+        courseMapper.insertSelective(courseConvertUtil.courseDTO2Course(course));
     }
 
     @Override

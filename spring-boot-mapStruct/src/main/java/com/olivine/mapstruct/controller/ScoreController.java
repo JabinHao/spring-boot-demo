@@ -45,6 +45,11 @@ public class ScoreController {
         return CommonResponse.success(this.scoreService.findById(id));
     }
 
+    @GetMapping("/get/by/student/{id}")
+    public CommonResponse<List<ScoreDTO>> getByStudentId(@PathVariable("id") String id){
+        final List<ScoreDTO> scoreDTOs = this.scoreService.findByStudentId(id);
+        return CommonResponse.success(scoreDTOs);
+    }
     /**
      * 新增数据
      *

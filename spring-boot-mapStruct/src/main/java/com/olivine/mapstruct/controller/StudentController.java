@@ -46,6 +46,14 @@ public class StudentController {
         return CommonResponse.success(this.studentService.findById(id));
     }
 
+    @GetMapping("/get/info/{id}")
+    public CommonResponse<StudentDTO> getInfoById(@PathVariable("id") String id){
+        final StudentDTO studentDTO = this.studentService.findWithScoreById(id);
+        if (studentDTO == null)
+            return CommonResponse.empty();
+        return CommonResponse.success(studentDTO);
+    }
+
     /**
      * 新增数据
      *

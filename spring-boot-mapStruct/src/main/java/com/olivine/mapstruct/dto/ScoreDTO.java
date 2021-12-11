@@ -28,7 +28,7 @@ public class ScoreDTO extends BaseDTO{
      * 课程编号
      */
     @JsonProperty("course_id")
-    private int courseId;
+    private Integer courseId;
 
     /**
      * 分数

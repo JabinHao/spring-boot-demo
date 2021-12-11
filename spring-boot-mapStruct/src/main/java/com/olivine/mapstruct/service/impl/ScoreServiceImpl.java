@@ -59,7 +59,7 @@ public class ScoreServiceImpl implements ScoreService {
     public void save(ScoreDTO scoreDTO) {
 
         final Score score = scoreConvertUtil.scoreDTO2Score(scoreDTO);
-        scoreMapper.insert(score);
+        scoreMapper.insertSelective(score);
         log.info("保存成绩信息：{}", scoreDTO);
     }
 
