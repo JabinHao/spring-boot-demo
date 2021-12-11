@@ -5,12 +5,12 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>commom</module>
+        <module>common</module>
         <module>spring-boot-mybatis</module>
         <module>sprint-boot-mybatis-pagehelper</module>
         <module>spring-boot-kafka</module>
+        <module>spring-boot-mapStruct</module>
     </modules>
-
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -23,20 +23,32 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-boot-demo</name>
     <description>spring-boot-demo</description>
+
     <properties>
         <java.version>1.8</java.version>
+        <mybatis.plus.version>3.4.3.4</mybatis.plus.version>
+        <mybatis.version>2.2.0</mybatis.version>
+        <pagehelper.version>5.3.0</pagehelper.version>
     </properties>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${pagehelper.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>
